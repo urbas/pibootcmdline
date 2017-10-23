@@ -18,7 +18,7 @@ pibootcmdline
      :alt: Updates
 
 
-Manipulate /boot/cmdline.txt programmatically with ease.
+Programmatically manipulate Raspberry Pi's /boot/cmdline.txt with ease.
 
 
 * Free software: MIT license
@@ -28,10 +28,12 @@ Manipulate /boot/cmdline.txt programmatically with ease.
 Features
 --------
 
-* TODO
+Loads contents of ``/boot/cmdline.txt`` as a Python dictionary.
+
+Stores a Python dictionary to ``/boot/cmdline.txt``.
 
 Credits
----------
+-------
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 

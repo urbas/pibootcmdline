@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from pibootcmdline.pibootcmdline import load, store  # NOQA
-
 """Top-level package for pibootcmdline."""
 
 __author__ = """Matej Urbas"""
