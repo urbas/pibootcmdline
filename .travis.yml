@@ -22,7 +22,7 @@ deploy:
   distributions: sdist bdist_wheel
   user: urbas
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: "RZ0Ek/k/FooAkgqkSYJScOFVpK4uPQiNhoF4+fnsymveQkQ/BQ5FW7j9fRsteyYSSfwfvTcHbTliaAVyvEufF1GhTjJ8tXsiOqleUVfL8MnQ9ysUEyxTaWvRRAjI+WN7xJ/27gXnmCoAZBHUBETQwWxdRhdXv2jHpF/wUKCTG4i3epoPg5VyDsu+GEmyOYGzU2TOHb1Ppy/Sa1dB9v3zIyUVK2fjFiLRuOUp8UidT+buALcRm8c6UH4UnHDUCbKNlguDlHznOi74/fJhz3sPogYZ51VBJEn3iuCll6oHbFy23M7NP3JqJwEjvs5j4z+floQjB/Y7FWWmqIthXZQaP/DROHR6NfE9LPL1r9/Nkw5k5EZnkVbBSIpK0/meiO5KeRhMYkgAdw2FarV7qf4lvEIcOIWYj7LhVZLoUg57kgUcMkYhXZV5RJ9cFRu+VLHYlr2uz1BD2JvNbzPWmzbrv4AVHmA6uu9nvlYVbQOwqPi4q+iVMqgdgEVawzN3xwVtYOUoVJW4qVMpa75v1APjHSqpg1SU4gsgkSBce0JLYrM64Mpn+i40uzIDoOp+Xnov/ccxKLaFrqmV3bW6NvJpe4GPxWtWhXlDA9tBA6cjoxsLK/DbLGaIwRPZPCvOO7OyCk4poq/L+mGLyH89bJDD112X+mS9h6W/JRLOyhzmNmc="
   on:
     tags: true
     repo: urbas/pibootcmdline
