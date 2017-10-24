@@ -27,4 +27,10 @@ def to_file(contents, filename='/boot/cmdline.txt'):
 
 
 def _print_element(key, value):
-    return key + '=' + value if value is not None else key
+    return key + '=' + _print_value(value) if value is not None else key
+
+
+def _print_value(value):
+    if isinstance(value, list):
+        return ','.join(value)
+    return value

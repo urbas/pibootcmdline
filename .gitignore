@@ -61,5 +61,8 @@ target/
 # pyenv python configuration file
 .python-version
 
+# virtualenvs
+.venv*/
+
 # IntelliJ
 *.iml

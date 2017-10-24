@@ -35,5 +35,12 @@ def from_file(filename='/boot/cmdline.txt'):
 
 def _parse_element(boot_cmdline):
     key_value = boot_cmdline.split('=', 1)
-    value = key_value[1] if len(key_value) == 2 else None
+    if len(key_value) == 2:
+        value_list = key_value[1].split(',')
+        if len(value_list) > 1:
+            value = value_list
+        else:
+            value = value_list[0]
+    else:
+        value = None
     return key_value[0], value

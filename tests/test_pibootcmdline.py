@@ -14,6 +14,8 @@ _mixed_cmdline_loaded = OrderedDict([('console', 'tty1'), ('rootwait', None)])
 
 _cmdline_value_with_eq = 'root=PARTUUID=c0ff14d9-02'
 
+_cmdline_list_value = 'modules-load=dwc2,g_ether'
+
 _cmdline_complex = 'dwc_otg.lpm_enable=0 console=tty1 root=PARTUUID=c0ff14d9-02 rootfstype=ext4 elevator=deadline ' \
                    'fsck.repair=yes rootwait modules-load=dwc2,g_ether'
 
@@ -59,6 +61,10 @@ def test_store_file(empty_file):
 
 def test_load_multi_spaces():
     assert from_str(_cmdline_multi_spaces) == OrderedDict([('foo', '42'), ('bar', None)])
+
+
+def test_load_list_value():
+    assert from_str(_cmdline_list_value) == OrderedDict([('modules-load', ['dwc2', 'g_ether'])])
 
 
 @pytest.fixture(scope='session')
