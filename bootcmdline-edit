@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+import pibootcmdline.app
+
+if __name__ == '__main__':
+    pibootcmdline.app.run()

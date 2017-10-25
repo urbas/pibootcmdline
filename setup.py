@@ -30,6 +30,7 @@ setup(
     author_email='matej.urbas@gmail.com',
     url='https://github.com/urbas/pibootcmdline',
     packages=find_packages(include=['pibootcmdline']),
+    scripts=['pibootcmdline-edit'],
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",

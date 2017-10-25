@@ -1,5 +1,7 @@
 from collections import OrderedDict
 
+from pibootcmdline.defaults import DEFAULT_BOOT_CMDLINE_FILE
+
 
 def from_str(boot_cmdline):
     """
@@ -13,10 +15,10 @@ def from_str(boot_cmdline):
     OrderedDict
         a dictionary representation of the ``/boot/cmdline.txt`` file.
     """
-    return OrderedDict(_parse_element(element) for element in boot_cmdline.split(' ') if element.strip())
+    return OrderedDict(parse_parameter(element) for element in boot_cmdline.split(' ') if element.strip())
 
 
-def from_file(filename='/boot/cmdline.txt'):
+def from_file(filename=DEFAULT_BOOT_CMDLINE_FILE):
     """
 
     Parameters
@@ -33,7 +35,7 @@ def from_file(filename='/boot/cmdline.txt'):
         return from_str(fh.read())
 
 
-def _parse_element(boot_cmdline):
+def parse_parameter(boot_cmdline):
     key_value = boot_cmdline.split('=', 1)
     if len(key_value) == 2:
         value_list = key_value[1].split(',')
