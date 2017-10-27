@@ -29,6 +29,13 @@ def _parse_args():
 
     parser_add = subparsers.add_parser("add", help="Adds a parameter to the cmdline file. "
                                                    "If the parameter already exists, it will be overwritten.")
-    parser_add.add_argument("parameters_to_add", nargs='+', help="The parameter to add to the cmdline file.")
+    parser_add.add_argument("parameters_to_add", nargs='+', help="The parameters to add to the cmdline file.")
+
+    parser_add = subparsers.add_parser("add-list-value",
+                                       help="Adds a value to the list parameter. For example, if the command line "
+                                            "already contains 'modules-load=dwc2' and you call "
+                                            "'add-list-value modules-load=g_ether' then the resulting command line "
+                                            "will contain 'modules-load=dwc2,g_ether'.")
+    parser_add.add_argument("parameters_to_add", nargs='+', help="The parameters to which to append values.")
 
     return parser.parse_args()
