@@ -1,5 +1,3 @@
-from collections import OrderedDict
-
 import pytest
 
 from pibootcmdline.parse import from_str, from_file
@@ -9,7 +7,7 @@ _cmdline_rootwait = 'rootwait'
 _cmdline_keyvalue = 'console=tty1'
 
 _cmdline_mixed = 'console=tty1 rootwait'
-_mixed_cmdline_loaded = OrderedDict([('console', 'tty1'), ('rootwait', None)])
+_mixed_cmdline_loaded = [('console', 'tty1'), ('rootwait', None)]
 
 _cmdline_value_with_eq = 'root=PARTUUID=c0ff14d9-02'
 
@@ -22,11 +20,11 @@ _cmdline_multi_spaces = 'foo=42  bar'
 
 
 def test_from_str_positional():
-    assert from_str(_cmdline_rootwait) == OrderedDict(rootwait=None)
+    assert from_str(_cmdline_rootwait) == [('rootwait', None)]
 
 
 def test_from_str_keyval():
-    assert from_str(_cmdline_keyvalue) == OrderedDict(console='tty1')
+    assert from_str(_cmdline_keyvalue) == [('console', 'tty1')]
 
 
 def test_from_str_mixed():
@@ -34,7 +32,7 @@ def test_from_str_mixed():
 
 
 def test_from_str_value_equals_char():
-    assert from_str(_cmdline_value_with_eq) == OrderedDict([('root', 'PARTUUID=c0ff14d9-02')])
+    assert from_str(_cmdline_value_with_eq) == [('root', 'PARTUUID=c0ff14d9-02')]
 
 
 def test_from_file(cmdline_file):
@@ -42,11 +40,11 @@ def test_from_file(cmdline_file):
 
 
 def test_from_str_multi_spaces():
-    assert from_str(_cmdline_multi_spaces) == OrderedDict([('foo', '42'), ('bar', None)])
+    assert from_str(_cmdline_multi_spaces) == [('foo', '42'), ('bar', None)]
 
 
 def test_from_str_list_value():
-    assert from_str(_cmdline_list_value) == OrderedDict([('modules-load', ['dwc2', 'g_ether'])])
+    assert from_str(_cmdline_list_value) == [('modules-load', ['dwc2', 'g_ether'])]
 
 
 @pytest.fixture(scope='session')

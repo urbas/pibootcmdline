@@ -10,7 +10,7 @@ def to_str(boot_cmdline):
     OrderedDict
         the cmdline string of key/values that can be writen into the ``/boot/cmdline.txt`` file.
     """
-    return ' '.join(_print_element(key, value) for key, value in boot_cmdline.items())
+    return ' '.join(_print_element(key_value[0], key_value[1]) for key_value in boot_cmdline)
 
 
 def to_file(contents, filename='/boot/cmdline.txt'):
