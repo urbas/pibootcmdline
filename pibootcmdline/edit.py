@@ -1,4 +1,4 @@
-from pibootcmdline.load import parse_parameter
+from pibootcmdline.parse import parse_parameter
 
 
 def add_parameters(cmdline, parameters_to_add):

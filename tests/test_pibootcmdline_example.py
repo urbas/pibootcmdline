@@ -11,8 +11,8 @@ def test_example(boot_cmdline_path):
     boot_cmdline_file = boot_cmdline_path.strpath
 
     # Example start
-    from pibootcmdline.load import from_file
-    from pibootcmdline.store import to_file
+    from pibootcmdline.parse import from_file
+    from pibootcmdline.write import to_file
 
     cmdline = from_file(boot_cmdline_file)
     cmdline.update({
