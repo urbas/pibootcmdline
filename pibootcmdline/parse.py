@@ -1,6 +1,8 @@
-from collections import OrderedDict
+from collections import namedtuple
 
 from pibootcmdline.defaults import DEFAULT_BOOT_CMDLINE_FILE
+
+Parameter = namedtuple('Parameter', ['key', 'values'])
 
 
 def from_str(boot_cmdline):
@@ -12,10 +14,10 @@ def from_str(boot_cmdline):
 
     Returns
     -------
-    OrderedDict
-        a dictionary representation of the ``/boot/cmdline.txt`` file.
+    list[Parameter]
+        a list of parameters.
     """
-    return OrderedDict(parse_parameter(element) for element in boot_cmdline.split(' ') if element.strip())
+    return [parse_parameter(element) for element in boot_cmdline.split(' ') if element.strip()]
 
 
 def from_file(filename=DEFAULT_BOOT_CMDLINE_FILE):
@@ -28,8 +30,8 @@ def from_file(filename=DEFAULT_BOOT_CMDLINE_FILE):
 
     Returns
     -------
-    OrderedDict
-        a dictionary representation of the ``/boot/cmdline.txt`` file.
+    list[Parameter]
+        a list of parameters.
     """
     with open(filename, 'r') as fh:
         return from_str(fh.read())
@@ -37,12 +39,4 @@ def from_file(filename=DEFAULT_BOOT_CMDLINE_FILE):
 
 def parse_parameter(boot_cmdline):
     key_value = boot_cmdline.split('=', 1)
-    if len(key_value) == 2:
-        value_list = key_value[1].split(',')
-        if len(value_list) > 1:
-            value = value_list
-        else:
-            value = value_list[0]
-    else:
-        value = None
-    return key_value[0], value
+    return Parameter(key_value[0], key_value[1].split(',') if len(key_value) == 2 else [])

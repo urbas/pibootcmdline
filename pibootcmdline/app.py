@@ -2,8 +2,8 @@ import argparse
 
 from pibootcmdline.defaults import DEFAULT_BOOT_CMDLINE_FILE
 from pibootcmdline.edit import add_parameters
-from pibootcmdline.load import from_str
-from pibootcmdline.store import to_file, to_str
+from pibootcmdline.parse import from_str
+from pibootcmdline.write import to_file, to_str
 
 
 def run():
@@ -31,10 +31,10 @@ def _parse_args():
                                                    "If the parameter already exists, it will be overwritten.")
     parser_add.add_argument("parameters_to_add", nargs='+', help="The parameters to add to the cmdline file.")
 
-    parser_add = subparsers.add_parser("add-list-value",
+    parser_add = subparsers.add_parser("add-to-value",
                                        help="Adds a value to the list parameter. For example, if the command line "
                                             "already contains 'modules-load=dwc2' and you call "
-                                            "'add-list-value modules-load=g_ether' then the resulting command line "
+                                            "'add-to-value modules-load=g_ether' then the resulting command line "
                                             "will contain 'modules-load=dwc2,g_ether'.")
     parser_add.add_argument("parameters_to_add", nargs='+', help="The parameters to which to append values.")
 
