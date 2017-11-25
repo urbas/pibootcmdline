@@ -1,13 +1,13 @@
 import pytest
 
-from pibootcmdline.parse import from_str, from_file
+from pibootcmdline.parse import from_str, from_file, Parameter
 from pibootcmdline.write import to_str, to_file
 
 _cmdline_rootwait = 'rootwait'
 
 _cmdline_keyvalue = 'console=tty1'
 
-_mixed_cmdline_loaded = [('console', 'tty1'), ('rootwait', None)]
+_mixed_cmdline_loaded = [Parameter('console', ['tty1']), Parameter('rootwait', [])]
 
 _cmdline_complex = 'dwc_otg.lpm_enable=0 console=tty1 root=PARTUUID=c0ff14d9-02 rootfstype=ext4 elevator=deadline ' \
                    'fsck.repair=yes rootwait modules-load=dwc2,g_ether'

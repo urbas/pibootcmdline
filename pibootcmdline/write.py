@@ -2,23 +2,23 @@ def to_str(boot_cmdline):
     """
     Parameters
     ----------
-    boot_cmdline: OrderedDit
-        a dictionary of key-values to convert to a cmdline string.
+    boot_cmdline: list[Parameter]
+        a list of parameters to convert to a cmdline string.
 
     Returns
     -------
-    OrderedDict
+    str
         the cmdline string of key/values that can be writen into the ``/boot/cmdline.txt`` file.
     """
-    return ' '.join(_print_element(key_value[0], key_value[1]) for key_value in boot_cmdline)
+    return ' '.join(_print_parameter(parameter) for parameter in boot_cmdline)
 
 
 def to_file(contents, filename='/boot/cmdline.txt'):
     """
     Parameters
     ----------
-    contents: OrderedDict
-        a dictionary of key/values to be stored into the cmdline file.
+    contents: list[Parameter]
+        a list of parameters to be stored into the cmdline file.
     filename: str, optional
         the name of the file to load. If omitted, ``/boot/cmdline.txt`` is used.
     """
@@ -26,11 +26,5 @@ def to_file(contents, filename='/boot/cmdline.txt'):
         fh.write(to_str(contents))
 
 
-def _print_element(key, value):
-    return '{}={}'.format(key, _print_value(value)) if value is not None else key
-
-
-def _print_value(value):
-    if isinstance(value, list):
-        return ','.join(value)
-    return value
+def _print_parameter(parameter):
+    return '{}={}'.format(parameter.key, ','.join(parameter.values)) if parameter.values else parameter.key
