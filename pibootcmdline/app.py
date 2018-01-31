@@ -1,7 +1,7 @@
 import argparse
 
 from pibootcmdline.defaults import DEFAULT_BOOT_CMDLINE_FILE
-from pibootcmdline.edit import add_parameters
+from pibootcmdline.edit import update_parameters
 from pibootcmdline.load import from_str
 from pibootcmdline.store import to_file, to_str
 
@@ -9,7 +9,7 @@ from pibootcmdline.store import to_file, to_str
 def run():
     args = _parse_args()
     cmdline = from_str(args.file)
-    cmdline = add_parameters(cmdline, args.parameters_to_add or [])
+    cmdline = update_parameters(cmdline, args.parameters_to_add or [])
     if args.in_place:
         to_file(cmdline, args.file)
     else:

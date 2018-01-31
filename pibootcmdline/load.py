@@ -12,10 +12,10 @@ def from_str(boot_cmdline):
 
     Returns
     -------
-    OrderedDict
+    list[tuple]
         a dictionary representation of the ``/boot/cmdline.txt`` file.
     """
-    return OrderedDict(parse_parameter(element) for element in boot_cmdline.split(' ') if element.strip())
+    return [parse_parameter(element) for element in boot_cmdline.split(' ') if element.strip()]
 
 
 def from_file(filename=DEFAULT_BOOT_CMDLINE_FILE):
@@ -28,7 +28,7 @@ def from_file(filename=DEFAULT_BOOT_CMDLINE_FILE):
 
     Returns
     -------
-    OrderedDict
+    list[tuple]
         a dictionary representation of the ``/boot/cmdline.txt`` file.
     """
     with open(filename, 'r') as fh:

@@ -1,11 +1,14 @@
 from pibootcmdline.load import parse_parameter
 
 
-def add_parameters(cmdline, parameters_to_add):
+def update_parameters(cmdline, parameters_to_add):
     """
+    Updates single occurrences of the given parameters. If there are multiple occurrences of any of the parameters, this
+    method will throw.
+
     Parameters
     ----------
-    cmdline: collections.OrderedDict
+    cmdline: list[tuple]
         parsed command line to which to add parameters.
 
     parameters_to_add: list[str]
@@ -13,7 +16,7 @@ def add_parameters(cmdline, parameters_to_add):
 
     Returns
     -------
-    collections.OrderedDict
+    list[tuple]
         the cmdline now also containing the added parameters.
     """
     cmdline.update(parse_parameter(parameter) for parameter in parameters_to_add)

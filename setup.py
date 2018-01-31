@@ -23,7 +23,7 @@ test_requirements = [
 
 setup(
     name='pibootcmdline',
-    version='0.0.1',
+    version='0.0.2',
     description="Manipulate /boot/cmdline.txt programmatically with ease.",
     long_description=readme + '\n\n' + history,
     author="Matej Urbas",
